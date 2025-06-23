@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Animation Creator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>2D Animation Creator</h1>
+            <div class="header-buttons">
+                <button id="reset-btn">Reset</button>
+                <button id="export-png-btn">Export PNG</button>
+                <button id="export-gif-btn">Export GIF</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <div class="section-header">
+                        <h3>Characters</h3>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="asset-item" data-type="character">
+                            <div class="asset-preview" data-src="character1"></div>
+                            <span>Character 1</span>
+                        </div>
+                        <div class="asset-item" data-type="character">
+                            <div class="asset-preview" data-src="character2"></div>
+                            <span>Character 2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="section-header">
+                        <h3>Backgrounds</h3>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="asset-item" data-type="background">
+                            <div class="asset-preview" data-src="background1"></div>
+                            <span>Background 1</span>
+                        </div>
+                        <div class="asset-item" data-type="background">
+                            <div class="asset-preview" data-src="background2"></div>
+                            <span>Background 2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="section-header">
+                        <h3>Objects</h3>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="asset-item" data-type="object">
+                            <div class="asset-preview" data-src="object1"></div>
+                            <span>Object 1</span>
+                        </div>
+                        <div class="asset-item" data-type="object">
+                            <div class="asset-preview" data-src="object2"></div>
+                            <span>Object 2</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="canvas-container">
+                <div class="canvas-toolbar">
+                    <button id="add-text-btn">Add Text</button>
+                </div>
+                <canvas id="animation-canvas"></canvas>
+            </main>
+
+            <aside class="properties-panel">
+                <h3>Properties Panel</h3>
+                <div id="property-controls">
+                    <div class="property-group">
+                        <label>Position</label>
+                        <div class="property-row">
+                            <span>X:</span>
+                            <input type="number" id="pos-x" disabled>
+                            <span>Y:</span>
+                            <input type="number" id="pos-y" disabled>
+                        </div>
+                    </div>
+                    <div class="property-group">
+                        <label>Size</label>
+                        <div class="property-row">
+                            <span>W:</span>
+                            <input type="number" id="width" disabled>
+                            <span>H:</span>
+                            <input type="number" id="height" disabled>
+                        </div>
+                    </div>
+                    <div class="property-group">
+                        <label>Color</label>
+                        <input type="color" id="color-picker" disabled>
+                    </div>
+                    <div class="property-group">
+                        <label>Layer Order</label>
+                        <div class="layer-buttons">
+                            <button id="bring-forward">Bring Forward</button>
+                            <button id="send-backward">Send Backward</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="drawing-tools">
+                    <h3>Drawing Tools</h3>
+                    <div class="tool-buttons">
+                        <button class="tool-btn active" data-tool="pencil">Pencil</button>
+                        <button class="tool-btn" data-tool="brush">Brush</button>
+                        <button class="tool-btn" data-tool="eraser">Eraser</button>
+                        <button class="tool-btn" data-tool="fill">Fill</button>
+                    </div>
+                    <div class="tool-settings">
+                        <div class="tool-setting">
+                            <label>Brush Size</label>
+                            <input type="range" id="brush-size" min="1" max="50" value="5">
+                            <span id="brush-size-value">5</span>
+                        </div>
+                        <div class="tool-setting">
+                            <label>Brush Color</label>
+                            <input type="color" id="brush-color" value="#000000">
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
